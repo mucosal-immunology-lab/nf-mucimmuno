@@ -1,0 +1,9 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	KT_1	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/KT_1_fastqc.zip
+FastQC	all_sections	KT_2	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/KT_2_fastqc.zip
+FastQC	all_sections	SB_1	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/SB_1_fastqc.zip
+FastQC	all_sections	SB_2	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/SB_2_fastqc.zip
+FastQC	all_sections	PLN_1	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/PLN_1_fastqc.zip
+FastQC	all_sections	PLN_2	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/PLN_2_fastqc.zip
+FastQC	all_sections	DM_1	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/DM_1_fastqc.zip
+FastQC	all_sections	DM_2	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/DM_2_fastqc.zip

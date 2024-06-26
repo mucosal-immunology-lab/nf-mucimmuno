@@ -1,0 +1,5 @@
+id,fastq_1,fastq_2
+DM,data/raw_fastq/DM_R1.fastq.gz,data/raw_fastq/DM_R2.fastq.gz
+KT,data/raw_fastq/KT_R1.fastq.gz,data/raw_fastq/KT_R2.fastq.gz
+PLN,data/raw_fastq/PLN_R1.fastq.gz,data/raw_fastq/PLN_R2.fastq.gz
+SB,data/raw_fastq/SB_R1.fastq.gz,data/raw_fastq/SB_R2.fastq.gz

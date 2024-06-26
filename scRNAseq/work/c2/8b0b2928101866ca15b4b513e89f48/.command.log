@@ -1,0 +1,24 @@
+
+  /// MultiQC 🔍 | v1.17
+
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/KT_1_fastqc.html
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/KT_2_fastqc.html
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/SB_1_fastqc.html
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/SB_2_fastqc.html
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/PLN_1_fastqc.html
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/PLN_2_fastqc.html
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/DM_1_fastqc.html
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/DM_2_fastqc.html
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/KT_1_fastqc.zip
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/KT_2_fastqc.zip
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/SB_1_fastqc.zip
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/SB_2_fastqc.zip
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/PLN_1_fastqc.zip
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/PLN_2_fastqc.zip
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/DM_1_fastqc.zip
+|           multiqc | Search path : /mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/c2/8b0b2928101866ca15b4b513e89f48/DM_2_fastqc.zip
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 16/16  
+|            fastqc | Found 8 reports
+|           multiqc | Report      : pretrim_multiqc_report.html
+|           multiqc | Data        : pretrim_multiqc_report_data
+|           multiqc | MultiQC complete

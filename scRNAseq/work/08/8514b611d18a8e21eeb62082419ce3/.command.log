@@ -1,0 +1,32 @@
+no change     /home/matthew/mambaforge/condabin/conda
+no change     /home/matthew/mambaforge/bin/conda
+no change     /home/matthew/mambaforge/bin/conda-env
+no change     /home/matthew/mambaforge/bin/activate
+no change     /home/matthew/mambaforge/bin/deactivate
+no change     /home/matthew/mambaforge/etc/profile.d/conda.sh
+no change     /home/matthew/mambaforge/etc/fish/conf.d/conda.fish
+no change     /home/matthew/mambaforge/shell/condabin/Conda.psm1
+no change     /home/matthew/mambaforge/shell/condabin/conda-hook.ps1
+no change     /home/matthew/mambaforge/lib/python3.10/site-packages/xontrib/conda.xsh
+no change     /home/matthew/mambaforge/etc/profile.d/conda.csh
+modified      /home/matthew/.bashrc
+
+==> For changes to take effect, close and re-open your current shell. <==
+
+Added mamba to /home/matthew/.bashrc
+
+==> For changes to take effect, close and re-open your current shell. <==
+
+Run 'mamba init' to be able to run mamba activate/deactivate
+and start a new shell session. Or use conda to activate/deactivate.
+
+application/gzip
+application/gzip
+Started analysis of PLN_1.gz
+Approx 50% complete for PLN_1.gz
+Approx 100% complete for PLN_1.gz
+Analysis complete for PLN_1.gz
+Started analysis of PLN_2.gz
+Approx 50% complete for PLN_2.gz
+Approx 100% complete for PLN_2.gz
+Analysis complete for PLN_2.gz
