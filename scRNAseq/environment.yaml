@@ -1,5 +1,4 @@
 name: nextflow-scrnaseq
-channel_priority: false
 channels:
   - conda-forge
   - defaults
