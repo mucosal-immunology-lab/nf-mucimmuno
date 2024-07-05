@@ -9,7 +9,7 @@ process COLLECT_EXPORT_FILES {
     path "export_files.tar.gz", emit: exported_files_tar
 
     script:
-    if ($params.profile == 'cluster') {
+    if (params.profile == 'cluster') {
         """
         module load gnuparallel
 
@@ -22,7 +22,7 @@ process COLLECT_EXPORT_FILES {
         tar -zcvf export_files.tar.gz export_files
         """
     }
-    if ($params.profile == 'local') {
+    if (params.profile == 'local') {
         """
         mkdir -p export_files
 
