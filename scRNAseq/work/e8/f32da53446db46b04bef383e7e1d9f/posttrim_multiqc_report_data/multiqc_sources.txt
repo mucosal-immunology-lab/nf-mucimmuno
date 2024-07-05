@@ -1,9 +1,0 @@
-Module	Section	Sample Name	Source
-FastQC	all_sections	PLN_1_val_1	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/e8/f32da53446db46b04bef383e7e1d9f/PLN_1_val_1_fastqc.zip
-FastQC	all_sections	PLN_2_val_2	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/e8/f32da53446db46b04bef383e7e1d9f/PLN_2_val_2_fastqc.zip
-FastQC	all_sections	SB_1_val_1	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/e8/f32da53446db46b04bef383e7e1d9f/SB_1_val_1_fastqc.zip
-FastQC	all_sections	SB_2_val_2	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/e8/f32da53446db46b04bef383e7e1d9f/SB_2_val_2_fastqc.zip
-FastQC	all_sections	KT_1_val_1	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/e8/f32da53446db46b04bef383e7e1d9f/KT_1_val_1_fastqc.zip
-FastQC	all_sections	KT_2_val_2	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/e8/f32da53446db46b04bef383e7e1d9f/KT_2_val_2_fastqc.zip
-FastQC	all_sections	DM_1_val_1	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/e8/f32da53446db46b04bef383e7e1d9f/DM_1_val_1_fastqc.zip
-FastQC	all_sections	DM_2_val_2	/mnt/GDrive_01/Monash/21_Scripts/nf-mucimmuno/scRNAseq/work/e8/f32da53446db46b04bef383e7e1d9f/DM_2_val_2_fastqc.zip

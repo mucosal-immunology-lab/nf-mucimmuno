@@ -143,3 +143,22 @@
 2024-06-22 14:11:00	13s	agitated_waddington	OK	d28dd43e3f2354208dc742df887546d9	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
 2024-06-22 14:11:31	5.6s	awesome_bohr	OK	86dd120ac0b5e8d467b1e4ae120a888b	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
 2024-06-22 14:17:53	15s	mighty_lavoisier	OK	86dd120ac0b5e8d467b1e4ae120a888b	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 16:16:38	17.4s	thirsty_saha	OK	00acfa3bc0756dc9c4355ef93499f0df	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:14:06	12.9s	kickass_swanson	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:15:36	3.5s	peaceful_gautier	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:17:35	3.7s	naughty_dijkstra	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:20:12	3.5s	sad_curran	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:24:29	3.6s	hopeful_davinci	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:24:56	3.7s	distracted_legentil	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:26:09	3.9s	magical_albattani	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:27:45	3.4s	determined_davinci	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:35:50	-	maniac_chandrasekhar	-	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-06-28 18:45:38	9m 26s	nice_crick	ERR	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-07-05 08:00:05	47m 49s	reverent_pare	OK	3a636f567a536ad686a7c9b81dc73ca4	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-07-05 09:57:38	3.9s	furious_galileo	OK	a71447fdac456669cf4a685fa2d38587	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-07-05 10:03:33	3.4s	naughty_euclid	OK	edd1086bfa924130bf917fbafffc6451	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-07-05 10:07:08	3.7s	sad_gutenberg	OK	edd1086bfa924130bf917fbafffc6451	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-07-05 10:10:54	24.8s	irreverent_pesquet	ERR	edd1086bfa924130bf917fbafffc6451	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-07-05 10:13:24	1m 54s	peaceful_bernard	OK	edd1086bfa924130bf917fbafffc6451	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-07-05 10:17:24	22.8s	modest_pike	ERR	edd1086bfa924130bf917fbafffc6451	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume
+2024-07-05 10:17:59	1m 50s	prickly_mcnulty	OK	edd1086bfa924130bf917fbafffc6451	70b76697-a24d-49cd-af52-b20a1b593aa2	nextflow run process_raw_reads.nf -resume

@@ -82,7 +82,7 @@ dependencies:
   - bwidget=1.9.16=h9eba36c_0
   - bzip2=1.0.8=h5eee18b_6
   - c-ares=1.19.1=h5eee18b_0
-  - ca-certificates=2024.6.2=hbcca054_0
+  - ca-certificates=2024.7.4=hbcca054_0
   - cairo=1.18.0=h3faef2a_0
   - certifi=2024.6.2=pyhd8ed1ab_0
   - cffi=1.16.0=py312hf06ca03_0
@@ -192,10 +192,11 @@ dependencies:
   - numpy=2.0.0=py312h22e1c76_0
   - openjdk=11.0.13=h87a67e3_0
   - openjpeg=2.5.0=h488ebb8_3
-  - openssl=3.3.1=h4ab18f5_0
+  - openssl=3.3.1=h4ab18f5_1
   - packaging=24.1=pyhd8ed1ab_0
   - pandoc=2.12=h06a4308_3
   - pango=1.50.14=ha41ecd1_2
+  - parallel=20240522=ha770c72_0
   - pbzip2=1.1.13=h1fcc475_2
   - pcre2=10.42=hebb0a14_1
   - perl=5.32.1=7_hd590300_perl5

@@ -1,2 +1,0 @@
-#!/bin/bash -ue
-multiqc PLN_1_val_1_fastqc.html PLN_2_val_2_fastqc.html DM_1_val_1_fastqc.html DM_2_val_2_fastqc.html KT_1_val_1_fastqc.html KT_2_val_2_fastqc.html SB_1_val_1_fastqc.html SB_2_val_2_fastqc.html PLN_1_val_1_fastqc.zip PLN_2_val_2_fastqc.zip DM_1_val_1_fastqc.zip DM_2_val_2_fastqc.zip KT_1_val_1_fastqc.zip KT_2_val_2_fastqc.zip SB_1_val_1_fastqc.zip SB_2_val_2_fastqc.zip --outdir . --filename posttrim_multiqc_report.html
