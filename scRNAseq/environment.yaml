@@ -1,8 +1,9 @@
 name: nextflow-scrnaseq
+channel_priority: false
 channels:
-  - bioconda
-  - defaults
   - conda-forge
+  - defaults
+  - bioconda
   - biobakery
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
