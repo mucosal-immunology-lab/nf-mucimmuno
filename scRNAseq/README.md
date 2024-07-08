@@ -9,9 +9,9 @@
     - [Prepare the genome :dna:](#prepare-the-genome-dna)
       - [Human genome files :man::woman:](#human-genome-files-manwoman)
       - [Mouse genome files :mouse:](#mouse-genome-files-mouse)
-    - [Prepare your sample sheet](#prepare-your-sample-sheet)
-    - [Running the pipeline](#running-the-pipeline)
-      - [Customisation](#customisation)
+    - [Prepare your sample sheet :pencil:](#prepare-your-sample-sheet-pencil)
+    - [Running the pipeline :running:](#running-the-pipeline-running)
+      - [Customisation :gear:](#customisation-gear)
 
 
 ## Introduction
@@ -139,7 +139,7 @@ STAR \
     --sjdbOverhang 78
 ```
 
-### Prepare your sample sheet
+### Prepare your sample sheet :pencil:
 
 This pipeline requires a sample sheet to identify where your FASTQ files are located, and which cell label sequences (CLS) are being utilised.
 
@@ -167,7 +167,7 @@ TREATMENT_S1,TREATMENT_S1_R1.fastq.gz,TREATMENT_S1_R2.fastq.gz,BD_Enhanced_V2
 
 An example is provided in [`data/samplesheet_test`](./data/samplesheet_test.csv).
 
-### Running the pipeline
+### Running the pipeline :running:
 
 Now you can run the pipeline. You will need to set up a parent job to run each of the individual jobs &ndash; this can be either an interactive session, or an sbatch job. For example:
 
@@ -185,7 +185,7 @@ Inside your interactive session, be sure to activate your `nextflow-scrnaseq` en
 nextflow run process_raw_reads.nf -resume -profile cluster
 ```
 
-#### Customisation
+#### Customisation :gear:
 
 There are several customisation options that are available within the `nextflow.config` file. While the defaults should be suitable for those with access to the M3 MASSIVE cluster genomics partition, for those without access, of for those who require different amounts of resources, there are ways to change these.
 
