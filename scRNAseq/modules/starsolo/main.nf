@@ -35,7 +35,7 @@ process STARSOLO {
                 "--soloUMIlen 8 \\" +
                 "--soloCBposition 0_0_0_8 0_21_0_29 0_43_0_51 \\" +
                 "--soloUMIposition 0_52_0_59 \\";
-            break
+            break;
         case "BD_Enhanced_V1":
             def whitespace_paths = ["${moduleDir}/CLS/BD_Enhanced_V1/BD_CLS1_V1.txt",
                                     "${moduleDir}/CLS/BD_Enhanced_V1/BD_CLS2_V1.txt",
@@ -46,6 +46,7 @@ process STARSOLO {
                 "--soloCBposition 2_0_2_8 2_13_2_21 3_1_3_9 \\" +
                 "--soloUMIposition 3_10_3_17 \\" +
                 "--soloAdapterSequence NNNNNNNNNGTGANNNNNNNNNGACA \\";
+            break;
         case "BD_Enhanced_V2":
             def whitespace_paths = ["${moduleDir}/CLS/BD_Enhanced_V2/BD_CLS1_V2.txt",
                                     "${moduleDir}/CLS/BD_Enhanced_V2/BD_CLS2_V2.txt",
@@ -56,6 +57,7 @@ process STARSOLO {
                 "--soloCBposition 2_0_2_8 2_13_2_21 3_1_3_9 \\" +
                 "--soloUMIposition 3_10_3_17 \\" +
                 "--soloAdapterSequence NNNNNNNNNGTGANNNNNNNNNGACA \\";
+            break;
     }
 
     // RUN STARsolo on the sample in either paired- or single-ended mode
