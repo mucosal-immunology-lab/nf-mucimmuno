@@ -9,3 +9,4 @@ dependencies:
   - fastqc
   - trim-galore
   - multiqc
+  - parallel
