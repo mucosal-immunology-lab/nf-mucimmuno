@@ -12,6 +12,10 @@
     - [Prepare your sample sheet :pencil:](#prepare-your-sample-sheet-pencil)
     - [Running the pipeline :running:](#running-the-pipeline-running)
       - [Customisation :gear:](#customisation-gear)
+  - [Outputs](#outputs)
+    - [Collected export files :package:](#collected-export-files-package)
+    - [Reports :page\_facing\_up:](#reports-page_facing_up)
+    - [STARsolo :star:](#starsolo-star)
 
 
 ## Introduction
@@ -27,6 +31,16 @@
 ### Download the repository :open_file_folder:
 
 This repository contains the relevant Nextflow workflow components, including a conda environment and submodules, to run the pipeline. To retrieve this repository alone, run the `retrieve_me.sh` script above.
+
+:warning: Git `sparse-checkout` is required to retrieve just the **nf-mucimmuno/scRNAseq** pipeline. It was only introduced to Git in version 2.27.0, so ensure that the loaded version is high enough (or that there is a version loaded on the cluster at all). As of July 2024, the M3 MASSIVE cluster has version 2.38.1 available. :warning:
+
+```bash
+# Check git version
+git --version
+
+# Load git module if not loaded or insufficient version
+module load git/2.38.1
+```
 
 First, create a new bash script file.
 
@@ -234,3 +248,86 @@ These settings relate to resource allocation and cluster settings. FASTQC and TR
 | *COLLECT_EXPORT_FILES*.memory | Memory for COLLECT_EXPORT_FILES step to use (default: `'32 GB'`) |
 | *COLLECT_EXPORT_FILES*.cpus | Number of CPUs for COLLECT_EXPORT_FILES step to use (default: `8`) |
 | *COLLECT_EXPORT_FILES*.clusterOptions | Specific cluster options for COLLECT_EXPORT_FILES step (default : `'--time=4:00:00 --partition=genomics --qos=genomics'`) |
+
+## Outputs
+
+Several outputs will be copied from their respective Nextflow `work` directories to the output folder of your choice (default: `results`).
+
+### Collected export files :package:
+
+The main output will be a single archive file called `export_files.tar.gz` that you will take for further downstream pre-processing. It contains STARsolo outputs for each sample, with the respective subfolders described below.
+
+### Reports :page_facing_up:
+
+Within the `reports` folder, you will find the MultiQC outputs from pre- and post-trimming.
+
+### STARsolo :star:
+
+Contains the outputs for each sample from STARsolo, including various log files and package version information.
+
+The main output of interest here is a folder called `{sample}.Solo.out`, which houses subfolders called `Gene`, `GeneFull_Ex50pAS`, and `Velocyto`. It is this main folder for each sample that is added to `export_files.tar.gz`.
+* As you will use the gene count data from `GeneFull_Ex50pAS` downstream, it is a good idea to check the `Summary.csv` within this folder for each sample to ensure mapping was successful.
+  * One of the key values to inspect is `Reads With Valid Barcodes`, which should be >0.8 (indicating at least 80% of reads had valid barcodes).
+  * If you note that this value is closer to 0.02 (i.e. ~2% had valid barcodes), you should double-check to make sure you specified the correct BD Rhapsody beads version. For instance, if you specified `BD_Enhanced_V1` but actually required `BD_Enhanced_V2`, the majority of your reads will not match the whitelist, and therefore the reads will be considered invalid.
+
+**Folder structure**
+
+Below is an example of the output structure for running one sample. The STARsolo folder would contain additional samples as required.
+
+```bash
+scRNAseq
+└── results/
+    ├── export_files.tar.gz
+    ├── reports/
+    │   ├── pretrim_multiqc_report.html
+    │   └── posttrim_multiqc_report.html
+    └── STARsolo/
+        └── sample1/
+            ├── sample1.Solo.out/
+            │   ├── Gene/
+            │   │   ├── filtered/
+            │   │   │   ├── barcodes.tsv.gz
+            │   │   │   ├── features.tsv.gz
+            │   │   │   └── matrix.mtx.gz
+            │   │   ├── raw/
+            │   │   │   ├── barcodes.tsv.gz
+            │   │   │   ├── features.tsv.gz
+            │   │   │   ├── matrix.mtx.gz
+            │   │   │   └── UniqueAndMult-EM.mtx.gz
+            │   │   ├── Features.stats
+            │   │   ├── Summary.csv
+            │   │   └── UMIperCellSorted.txt
+            │   ├── GeneFull_Ex50pAS/
+            │   │   ├── filtered/
+            │   │   │   ├── barcodes.tsv.gz
+            │   │   │   ├── features.tsv.gz
+            │   │   │   └── matrix.mtx.gz
+            │   │   ├── raw/
+            │   │   │   ├── barcodes.tsv.gz
+            │   │   │   ├── features.tsv.gz
+            │   │   │   ├── matrix.mtx.gz
+            │   │   │   └── UniqueAndMult-EM.mtx.gz
+            │   │   ├── Features.stats
+            │   │   ├── Summary.csv
+            │   │   └── UMIperCellSorted.txt
+            │   ├── Velocyto/
+            │   │   ├── filtered/
+            │   │   │   ├── ambiguous.mtx.gz
+            │   │   │   ├── barcodes.tsv.gz
+            │   │   │   ├── features.tsv.gz
+            │   │   │   ├── spliced.mtx.gz
+            │   │   │   └── unspliced.mtx.gz
+            │   │   ├── raw/
+            │   │   │   ├── ambiguous.mtx.gz
+            │   │   │   ├── barcodes.tsv.gz
+            │   │   │   ├── features.tsv.gz
+            │   │   │   ├── spliced.mtx.gz
+            │   │   │   └── unspliced.mtx.gz
+            │   │   ├── Features.stats
+            │   │   └── Summary.csv
+            │   └── Barcodes.stats
+            ├── sample1.Log.final.out
+            ├── sample1.Log.out
+            ├── sample1.Log.progress.out
+            └── versions.yml
+```
