@@ -10,7 +10,7 @@ Additionally, we may provide additional tools and code for further downstream pr
 
 ## Single-cell RNAseq FASTQ pre-processing
 
-[**nf-mucimmuno/scRNAseq**](./scRNAseq/) is a bioinformatics pipeline that can be used to run quality control steps and alignment to a host genome using STARsolo. 
+[**nf-mucimmuno/scRNAseq**](./scRNAseq/) is a bioinformatics pipeline for single-cell RNA sequencing data that can be used to run quality control steps and alignment to a host genome using STARsolo. Currently only configured for use with data resulting from BD Rhapsody library preparation.
 
 <div align="center">
 <img src="./assets/images/nf-mucimmuno_scRNAseq-01.png" width=80%>
