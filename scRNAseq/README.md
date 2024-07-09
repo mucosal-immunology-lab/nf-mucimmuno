@@ -195,6 +195,9 @@ Make sure you alter the `nextflow.config` file to provide the paths to both your
 Inside your interactive session, be sure to activate your `nextflow-scrnaseq` environment from above. Then, **inside the scRNAseq folder**, begin the pipeline using the following command (ensuring you use the `cluster` profile to make use of the Slurm workflow manager).
 
 ```bash
+# Activate conda environment
+mamba activate nextflow-scrnaseq
+
 # Begin running the pipeline
 nextflow run process_raw_reads.nf -resume -profile cluster
 ```
