@@ -1,7 +1,7 @@
-# Pre-processing of scRNAseq FASTQ files
+# Single-cell RNAseq FASTQ pre-processing
 
 
-- [Pre-processing of scRNAseq FASTQ files](#pre-processing-of-scrnaseq-fastq-files)
+- [Single-cell RNAseq FASTQ pre-processing](#single-cell-rnaseq-fastq-pre-processing)
   - [Introduction](#introduction)
   - [Usage](#usage)
     - [Download the repository :open\_file\_folder:](#download-the-repository-open_file_folder)
