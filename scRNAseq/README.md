@@ -103,7 +103,7 @@ Create a new folder somewhere to store your genome files. Enter the new folder, 
 
 :warning: Please check if these are already available somewhere before regenerating them yourself! :warning:
 
-STAR should be loaded already via the conda environment for the genome indexing step. We will set `--sjdbOverhang` to 78 to be suitable for use with the longer `R2` FASTQ data resulting from BD Rhapsody single cell sequencing. This may require alteration for other platforms.
+STAR should be loaded already via the conda environment for the genome indexing step. We will set `--sjdbOverhang` to 79 to be suitable for use with the longer `R2` FASTQ data resulting from BD Rhapsody single cell sequencing. This may require alteration for other platforms. **Essentially, you just need to set `--sjdbOverhang` to the length of your R2 sequences minus 1.**
 
 #### Human genome files :man::woman:
 
@@ -122,11 +122,11 @@ Then use STAR to prepare the genome index.
 VERSION=111
 STAR \
     --runThreadN 16 \
-    --genomeDir "STARgenomeIndex78/" \
+    --genomeDir "STARgenomeIndex79/" \
     --runMode genomeGenerate \
     --genomeFastaFiles "Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa" \
     --sjdbGTFfile "Homo_sapiens.GRCh38.$VERSION.gtf" \
-    --sjdbOverhang 78
+    --sjdbOverhang 79
 ```
 
 #### Mouse genome files :mouse:
@@ -146,11 +146,11 @@ Then use STAR to prepare the genome index.
 VERSION=111
 STAR \
     --runThreadN 16 \
-    --genomeDir "STARgenomeIndex78/" \
+    --genomeDir "STARgenomeIndex79/" \
     --runMode genomeGenerate \
     --genomeFastaFiles "Mus_musculus.GRCm39.dna_sm.primary_assembly.fa" \
     --sjdbGTFfile "Mus_musculus.GRCm39.$VERSION.gtf" \
-    --sjdbOverhang 78
+    --sjdbOverhang 79
 ```
 
 ### Prepare your sample sheet :pencil:
@@ -173,10 +173,10 @@ The benefit of providing the name of the CLS bead versions in the sample sheet i
 Your sample sheet should look as follows, **ensuring you use the exact column names as below**. Remember that on the M3 MASSIVE cluster, you need to use the **full file path** &ndash; relative file paths don't usually work.
 
 ```bash
-sample,fastq_1,fastq_2,CLS
-CONTROL_S1,CONTROL_S1_R1.fastq.gz,CONTROL_S1_R2.fastq.gz,BD_Enhanced_V2
-CONTROL_S2,CONTROL_S2_R1.fastq.gz,CONTROL_S1_R2.fastq.gz,BD_Enhanced_V2
-TREATMENT_S1,TREATMENT_S1_R1.fastq.gz,TREATMENT_S1_R2.fastq.gz,BD_Enhanced_V2
+sample,fastq_1,fastq_2,CLS,GenomeIndex
+CONTROL_S1,CONTROL_S1_R1.fastq.gz,CONTROL_S1_R2.fastq.gz,BD_Enhanced_V2,mf33/Databases/ensembl/human/STARgenomeIndex79
+CONTROL_S2,CONTROL_S2_R1.fastq.gz,CONTROL_S1_R2.fastq.gz,BD_Enhanced_V2,mf33/Databases/ensembl/human/STARgenomeIndex79
+TREATMENT_S1,TREATMENT_S1_R1.fastq.gz,TREATMENT_S1_R2.fastq.gz,BD_Enhanced_V2,mf33/Databases/ensembl/human/STARgenomeIndex79
 ```
 
 An example is provided in [`data/samplesheet_test`](./data/samplesheet_test.csv).

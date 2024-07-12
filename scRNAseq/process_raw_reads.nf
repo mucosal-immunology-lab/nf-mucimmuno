@@ -13,7 +13,7 @@ workflow {
     Channel.fromPath(params.samples_csv, checkIfExists:true)
     | splitCsv(header:true)
     | map { row ->
-        meta = row.subMap('id') + [CLS: row.CLS]
+        meta = row.subMap('id') + [CLS: row.CLS] + [GenomeIndex: row.GenomeIndex]
         single_end = !row.fastq_2
         files = single_end ? [file(row.fastq_1, checkIfExists:true)] : [file(row.fastq_1, checkIfExists:true), file(row.fastq_2, checkIfExists:true)]
         [meta + [single_end: single_end], files]

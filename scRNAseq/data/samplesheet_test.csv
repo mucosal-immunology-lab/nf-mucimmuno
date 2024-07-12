@@ -1,5 +1,8 @@
-id,fastq_1,fastq_2,CLS
-DM,data/raw_fastq/DM_R1.fastq.gz,data/raw_fastq/DM_R2.fastq.gz,BD_Enhanced_V1
-KT,data/raw_fastq/KT_R1.fastq.gz,data/raw_fastq/KT_R2.fastq.gz,BD_Enhanced_V1
-PLN,data/raw_fastq/PLN_R1.fastq.gz,data/raw_fastq/PLN_R2.fastq.gz,BD_Enhanced_V1
-SB,data/raw_fastq/SB_R1.fastq.gz,data/raw_fastq/SB_R2.fastq.gz,BD_Enhanced_V1
+id,fastq_1,fastq_2,CLS,GenomeIndex
+DM,data/raw_fastq/DM_R1.fastq.gz,data/raw_fastq/DM_R2.fastq.gz,BD_Enhanced_V1,/mnt/GDrive_01/Monash/20_Databases/scRNAseq/ensembl/human/STARgenomeIndex79
+KT,data/raw_fastq/KT_R1.fastq.gz,data/raw_fastq/KT_R2.fastq.gz,BD_Enhanced_V1,/mnt/GDrive_01/Monash/20_Databases/scRNAseq/ensembl/human/STARgenomeIndex79
+PLN,data/raw_fastq/PLN_R1.fastq.gz,data/raw_fastq/PLN_R2.fastq.gz,BD_Enhanced_V1,/mnt/GDrive_01/Monash/20_Databases/scRNAseq/ensembl/human/STARgenomeIndex79
+SB,data/raw_fastq/SB_R1.fastq.gz,data/raw_fastq/SB_R2.fastq.gz,BD_Enhanced_V1,/mnt/GDrive_01/Monash/20_Databases/scRNAseq/ensembl/human/STARgenomeIndex79
+Healthy,data/raw_fastq/healthy_short_R1.fastq.gz,data/raw_fastq/healthy_short_R2.fastq.gz,10X_Chromium_V2,/mnt/GDrive_01/Monash/20_Databases/scRNAseq/ensembl/human/STARgenomeIndex57
+Smoker,data/raw_fastq/smoker_short_R1.fastq.gz,data/raw_fastq/smoker_short_R2.fastq.gz,10X_Chromium_V2,/mnt/GDrive_01/Monash/20_Databases/scRNAseq/ensembl/human/STARgenomeIndex83
+COPD,data/raw_fastq/COPD_short_R1.fastq.gz,data/raw_fastq/COPD_short_R2.fastq.gz,10X_Chromium_V3,/mnt/GDrive_01/Monash/20_Databases/scRNAseq/ensembl/human/STARgenomeIndex79
