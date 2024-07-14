@@ -31,32 +31,60 @@ process STARSOLO {
                                     "${moduleDir}/CLS/BD_Original/BD_CLS2_original.txt",
                                     "${moduleDir}/CLS/BD_Original/BD_CLS3_original.txt"];
             def whitespace_paths_str = whitespace_paths.collect { '"' + it + '"' }.join(' ');
-            solo_args = "--soloCBwhitelist ${whitespace_paths_str} \\" +
-                "--soloUMIlen 8 \\" +
-                "--soloCBposition 0_0_0_8 0_21_0_29 0_43_0_51 \\" +
-                "--soloUMIposition 0_52_0_59 \\";
+            solo_args = "--soloType CB_UMI_Complex " +
+                "--soloCBmatchWLtype EditDist_2 " +
+                "--soloCBwhitelist ${whitespace_paths_str} " +
+                "--soloUMIlen 8 " +
+                "--soloCBposition 0_0_0_8 0_21_0_29 0_43_0_51 " +
+                "--soloUMIposition 0_52_0_59 ";
             break;
         case "BD_Enhanced_V1":
             def whitespace_paths = ["${moduleDir}/CLS/BD_Enhanced_V1/BD_CLS1_V1.txt",
                                     "${moduleDir}/CLS/BD_Enhanced_V1/BD_CLS2_V1.txt",
                                     "${moduleDir}/CLS/BD_Enhanced_V1/BD_CLS3_V1.txt"];
             def whitespace_paths_str = whitespace_paths.collect { '"' + it + '"' }.join(' ');
-            solo_args = "--soloCBwhitelist ${whitespace_paths_str} \\" +
-                "--soloUMIlen 8 \\" +
-                "--soloCBposition 2_0_2_8 2_13_2_21 3_1_3_9 \\" +
-                "--soloUMIposition 3_10_3_17 \\" +
-                "--soloAdapterSequence NNNNNNNNNGTGANNNNNNNNNGACA \\";
+            solo_args = "--soloType CB_UMI_Complex " +
+                "--soloCBmatchWLtype EditDist_2 " +
+                "--soloCBwhitelist ${whitespace_paths_str} " +
+                "--soloUMIlen 8 " +
+                "--soloCBposition 2_0_2_8 2_13_2_21 3_1_3_9 " +
+                "--soloUMIposition 3_10_3_17 " +
+                "--soloAdapterSequence NNNNNNNNNGTGANNNNNNNNNGACA ";
             break;
         case "BD_Enhanced_V2":
             def whitespace_paths = ["${moduleDir}/CLS/BD_Enhanced_V2/BD_CLS1_V2.txt",
                                     "${moduleDir}/CLS/BD_Enhanced_V2/BD_CLS2_V2.txt",
                                     "${moduleDir}/CLS/BD_Enhanced_V2/BD_CLS3_V2.txt"];
             def whitespace_paths_str = whitespace_paths.collect { '"' + it + '"' }.join(' ');
-            solo_args = "--soloCBwhitelist ${whitespace_paths_str} \\" +
+            solo_args = "--soloType CB_UMI_Complex " +
+                "--soloCBmatchWLtype EditDist_2 " +
+                "--soloCBwhitelist ${whitespace_paths_str} " +
                 "--soloUMIlen 8 \\" +
-                "--soloCBposition 2_0_2_8 2_13_2_21 3_1_3_9 \\" +
-                "--soloUMIposition 3_10_3_17 \\" +
-                "--soloAdapterSequence NNNNNNNNNGTGANNNNNNNNNGACA \\";
+                "--soloCBposition 2_0_2_8 2_13_2_21 3_1_3_9 " +
+                "--soloUMIposition 3_10_3_17 " +
+                "--soloAdapterSequence NNNNNNNNNGTGANNNNNNNNNGACA ";
+            break;
+        case "10X_Chromium_V2":
+            solo_args = "--soloType CB_UMI_Simple " +
+                "--soloCBmatchWLtype 1MM multi Nbase pseudocounts " +
+                "--soloCBwhitelist \"${moduleDir}/CLS/10X_Chromium_V2/10X_V2_737K_august_2016.txt\" " +
+                "--clipAdapterType CellRanger4 " +
+                "--soloBarcodeReadLength 0 " +
+                "--soloCBstart 1 " +
+                "--soloCBlen 16 " +
+                "--soloUMIstart 17 " +
+                "--soloUMIlen 10 ";
+            break;
+        case "10X_Chromium_V3":
+            solo_args = "--soloType CB_UMI_Simple " +
+                "--soloCBmatchWLtype 1MM multi Nbase pseudocounts " +
+                "--soloCBwhitelist \"${moduleDir}/CLS/10X_Chromium_V3/10X_V3_6975K_feb_2018.txt\" " +
+                "--clipAdapterType CellRanger4 " +
+                "--soloBarcodeReadLength 0 " +
+                "--soloCBstart 1 " +
+                "--soloCBlen 16 " +
+                "--soloUMIstart 17 " +
+                "--soloUMIlen 12 ";
             break;
     }
 
@@ -67,14 +95,12 @@ process STARSOLO {
         [ ! -f  ${prefix}_2.fastq.gz ] && ln -s ${reads[1]} ${prefix}_2.fastq.gz
 
         STAR \\
-            --genomeDir $params.starsolo.index \\
+            --genomeDir $meta.GenomeIndex \\
             --runThreadN $cores \\
             --runMode alignReads \\
             --readFilesIn ${prefix}_2.fastq.gz ${prefix}_1.fastq.gz \\
             --readFilesCommand zcat \\
             --outFileNamePrefix ${prefix}. \\
-            --soloType $params.starsolo.soloType \\
-            --soloCBmatchWLtype $params.starsolo.soloCBmatchWLtype \\
             --soloUMIdedup $params.starsolo.soloUMIdedup \\
             --soloUMIfiltering $params.starsolo.soloUMIfiltering \\
             --soloCellFilter $params.starsolo.soloCellFilter \\
@@ -96,7 +122,7 @@ process STARSOLO {
         """
         [ ! -f  ${prefix}_1.fastq.gz ] && ln -s ${reads[0]} ${prefix}_1.fastq.gz
         STAR \\
-            --genomeDir $params.starsolo.index \\
+            --genomeDir $meta.GenomeIndex \\
             --runThreadN $cores \\
             --runMode alignReads \\
             --readFilesIn ${prefix}_1.fastq.gz \\
@@ -109,6 +135,7 @@ process STARSOLO {
             --soloCellFilter $params.starsolo.soloCellFilter \\
             --soloFeatures Gene GeneFull_Ex50pAS Velocyto \\
             --soloMultiMappers $params.starsolo.soloMultiMappers \\
+            $solo_args \\
             --outSAMtype None
         
         if [ -d ${prefix}.Solo.out ]; then

@@ -75,6 +75,9 @@ mv $SUBFOLDER ../
 cd ..
 rm -rf $REPO_DIR
 
+# Extract the larger gzipped CLS files
+gunzip -r "$SUBFOLDER/modules/starsolo/CLS"
+
 echo "Subfolder '$SUBFOLDER' has been downloaded successfully."
 ```
 
@@ -162,6 +165,12 @@ More information about the CLS tags used with BD Rhapsody single-cell RNAseq lib
 * [BD Rhapsody Sequence Analysis Pipeline &ndash; User's Guide](https://www.bdbiosciences.com/content/dam/bdb/marketing-documents/products-pdf-folder/software-informatics/rhapsody-sequence-analysis-pipeline/Rhapsody-Sequence-Analysis-Pipeline-UG.pdf)
 * [BD Rhapsody Cell Label Structure &ndash; Python Script](https://bd-rhapsody-public.s3.amazonaws.com/CellLabel/rhapsody_cell_label.py.txt)
 
+More information about the CLS tags used with 10X Chromium single-cell RNAseq library preparation can be found here:
+
+* [10X Chromium Single Cell 3' Solution V2 and V3 guide (Teich Lab)](https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium3.html)
+  * 10X Chromium V2 CLS sequences are 26bp long.
+  * 10X Chromium V3 CLS sequences are 28bp long.
+
 The benefit of providing the name of the CLS bead versions in the sample sheet is that you can combine runs that utilise different beads together in the same workflow. Keep in mind that if you do this though, there may be some bead-related batch effects to address and correct downstream &ndash; it is always important to check for these effects when combining sequencing runs in any case. The current options are:
 
 | CLS option | Description |
@@ -169,6 +178,10 @@ The benefit of providing the name of the CLS bead versions in the sample sheet i
 | BD_Original | The original BD rhapsody beads and linker sequences |
 | BD_Enhanced_V1 | First version of enhanced beads with polyT and 5prime capture oligo types, shorter linker sequences, longer polyT, and 0-3 diversity insert bases at the beginning of the sequence |
 | BD_Enhanced_V2 | Same structure as the enhanced (V1) beads, but with increased CLS diversity (384 vs. 96) |
+| 10X_Chromium_V2 | Feature a 16 bp cell barcode and a 10 bp unique molecular identifier (UMI) |
+| 10X_Chromium_V3 | Enhanced sequencing accuracy and resolution with a 16 bp cell barcode and a 12 bp UMI |
+
+Further, we also need to provide the path to the STAR genome index folder for each sample &ndash; while in many cases this value will remain constant, the benefit of providing this information is that you can process runs with different R2 sequence lengths at the same time. Recall from above that the genome index you use should use an `--sjdbOverhang` length that of your R2 sequences minus 1.
 
 Your sample sheet should look as follows, **ensuring you use the exact column names as below**. Remember that on the M3 MASSIVE cluster, you need to use the **full file path** &ndash; relative file paths don't usually work.
 
@@ -206,6 +219,12 @@ nextflow run process_raw_reads.nf -resume -profile cluster
 
 There are several customisation options that are available within the `nextflow.config` file. While the defaults should be suitable for those with access to the M3 MASSIVE cluster genomics partition, for those without access, of for those who require different amounts of resources, there are ways to change these.
 
+In order to work with different technologies, and accommodate for differences in cell label structure (CLS), the STAR parameters `--soloType` and `--soloCBmatchWLtype` are set in a CLS-dependent manner. This is required, because the BD Rhapsody system has a complex barcode structure. The 10X Chromium system on the other hand has a simple barcode structure with a single barcode and single UMI. Additionally, the `--soloCBmatchWLtype = EditDist2` only works with `--soloType = CB_UMI_Complex`, and therefore `--soloCBmatchWLtype = 1MM multi Nbase pseudocounts` is used for 10X Chromium runs.
+
+* For BD Rhapsody sequencing: `--soloType = CB_UMI_Complex` and `--soloCBmatchWLtype = EditDist2`.
+* For 10X Chromium sequencing: `--soloType = CB_UMI_Simple` and `--soloCBmatchWLtype = 1MM multi Nbase pseudocounts`.
+  * Additionally, 10X Chromium runs use `--clipAdapterType = CellRanger4`.
+
 To adjust the `cluster` profile settings, stay within the appropriate section at the top of the file.
 
 ***Parameters***
@@ -217,12 +236,9 @@ Visit [STAR documentation](https://github.com/alexdobin/STAR/) for explanations 
 | samples_csv | The file path to your sample sheet |
 | outdir | A new folder name to be created for your results |
 | *trimgalore*.quality | The minimum quality before a sequence is truncated (default: `20`) |
-| *trimgalore*.length | The minimum length of a sequence in order to be retained (default: `43`) |
 | *trimgalore*.adapter | A custom adapter sequence for the R1 sequences (default: `'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'`) |
 | *trimgalore*.adapter2 | A custom adapter sequence for the R2 sequences (default: `'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'`) |
 | *starsolo*.index | The file path to the prepared genome index folder |
-| *starsolo*.soloType | The type of single-cell RNAseq (default: `'CB_UMI_Complex'`) |
-| *starsolo*.soloCBmatchWLtype | The method for matching cell barcodes to the whitelist files (default: `'EditDist_2'`) |
 | *starsolo*.soloUMIdedup | The type of UMI deduplication (default: `'1MM_CR'`) |
 | *starsolo*.soloUMIfiltering | The type of UMI filtering for reads uniquely mapping to genes (default: `'MultiGeneUMI_CR'`) |
 | *starsolo*.soloCellFilter | The method type and parameters for cell filtering (default: `'EmptyDrops_CR'`) |

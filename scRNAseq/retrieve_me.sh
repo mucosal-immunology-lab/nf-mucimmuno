@@ -21,4 +21,7 @@ mv $SUBFOLDER ../
 cd ..
 rm -rf $REPO_DIR
 
+# Extract the larger gzipped CLS files
+gunzip -r "$SUBFOLDER/modules/starsolo/CLS"
+
 echo "Subfolder '$SUBFOLDER' has been downloaded successfully."

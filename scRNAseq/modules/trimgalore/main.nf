@@ -31,6 +31,26 @@ process TRIMGALORE {
         if (cores > 8) cores = 8
     }
 
+    // Base trimming length settings on the CLS type (and associated R1 lengths)
+    def trimgalore_length = 0
+    switch(meta.CLS) {
+        case "BD_Original":
+            trimgalore_length = 43;
+            break;
+        case "BD_Enhanced_V1":
+            trimgalore_length = 43;
+            break;
+        case "BD_Enhanced_V2":
+            trimgalore_length = 43;
+            break;
+        case "10X_Chromium_V2":
+            trimgalore_length = 26;
+            break;
+        case "10X_Chromium_V3":
+            trimgalore_length = 28;
+            break;
+    }
+
     // Added soft-links to original fastqs for consistent naming in MultiQC
     def prefix = task.ext.prefix ?: "${meta.id}"
     if (meta.single_end) {
@@ -43,7 +63,7 @@ process TRIMGALORE {
             --cores $cores \\
             --fastqc \\
             --quality $params.trimgalore.quality \\
-            --length $params.trimgalore.length \\
+            --length ${trimgalore_length} \\
             --gzip \\
             ${prefix}.fastq.gz
 
@@ -63,7 +83,7 @@ process TRIMGALORE {
             --fastqc \\
             --paired \\
             --quality $params.trimgalore.quality \\
-            --length $params.trimgalore.length \\
+            --length ${trimgalore_length} \\
             --adapter $params.trimgalore.adapter \\
             --adapter2 $params.trimgalore.adapter2 \\
             --gzip \\
