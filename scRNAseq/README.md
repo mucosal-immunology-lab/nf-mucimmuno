@@ -272,6 +272,29 @@ These settings relate to resource allocation and cluster settings. FASTQC and TR
 
 Several outputs will be copied from their respective Nextflow `work` directories to the output folder of your choice (default: `results`).
 
+**Alignment summary utility script**
+
+:rainbow: There is also a utility script in the main `scRNAseq` directory called `collect_alignment_summaries.sh`. This will navigate into each of the sample folders inside `results/STARsolo`, and retrieve some key information for you to validate that the alignment worked successfully (from the `GeneFull_Ex50pAS` subfolder). This can otherwise take quite some time to go through each folder if you have a lot of samples.
+
+* After running this, a new file called `AlignmentSummary.txt` will be generated in the `scRNAseq` directory. Each sample will be listed by name, with the number of reads, percentage of reads with valid barcodes, and estimated number of cells.
+* It will be immediately obvious that something has gone wrong if you see that the percentage of reads with valid barcodes is very low (e.g. `0.02` = 2% valid barcodes) &ndash; this is usually paired with a very low estimated cell number.
+  * This could indicate that you have used the wrong barcode version for your runs, and therefore the associated barcode whitelist used by the pipeline was incorrect.
+
+A successful example is shown below.
+
+```bash
+Sample: Healthy1
+Number of Reads,353152389
+Reads With Valid Barcodes,0.950799
+Estimated Number of Cells,6623
+
+Sample: Healthy2
+Number of Reads,344989615
+Reads With Valid Barcodes,0.948577
+Estimated Number of Cells,6631
+# etc...
+```
+
 ### Collected export files :package:
 
 The main output will be a single archive file called `export_files.tar.gz` that you will take for further downstream pre-processing. It contains STARsolo outputs for each sample, with the respective subfolders described below.
@@ -285,7 +308,7 @@ Within the `reports` folder, you will find the MultiQC outputs from pre- and pos
 Contains the outputs for each sample from STARsolo, including various log files and package version information.
 
 The main output of interest here is a folder called `{sample}.Solo.out`, which houses subfolders called `Gene`, `GeneFull_Ex50pAS`, and `Velocyto`. It is this main folder for each sample that is added to `export_files.tar.gz`.
-* As you will use the gene count data from `GeneFull_Ex50pAS` downstream, it is a good idea to check the `Summary.csv` within this folder for each sample to ensure mapping was successful.
+* As you will use the gene count data from `GeneFull_Ex50pAS` downstream, it is a good idea to check the `Summary.csv` within this folder for each sample to ensure mapping was successful (or use the utility script above).
   * One of the key values to inspect is `Reads With Valid Barcodes`, which should be >0.8 (indicating at least 80% of reads had valid barcodes).
   * If you note that this value is closer to 0.02 (i.e. ~2% had valid barcodes), you should double-check to make sure you specified the correct BD Rhapsody beads version. For instance, if you specified `BD_Enhanced_V1` but actually required `BD_Enhanced_V2`, the majority of your reads will not match the whitelist, and therefore the reads will be considered invalid.
 
