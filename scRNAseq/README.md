@@ -280,7 +280,7 @@ Several outputs will be copied from their respective Nextflow `work` directories
 * It will be immediately obvious that something has gone wrong if you see that the percentage of reads with valid barcodes is very low (e.g. `0.02` = 2% valid barcodes) &ndash; this is usually paired with a very low estimated cell number.
   * This could indicate that you have used the wrong barcode version for your runs, and therefore the associated barcode whitelist used by the pipeline was incorrect.
 
-A successful example is shown below.
+A successful example is shown below :sparkles:
 
 ```bash
 Sample: Healthy1
