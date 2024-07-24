@@ -203,7 +203,7 @@ Now you can run the pipeline. You will need to set up a parent job to run each o
 smux n --time=3-00:00:00 --mem=16GB --ntasks=1 --cpuspertask=2 -J nf-STARsolo
 ```
 
-Make sure you alter the `nextflow.config` file to provide the paths to both your sample sheet and the prepared genome index folder. Stay within the top `cluster` profile section to alter setting for Slurm-submitted jobs.
+Make sure you alter the `nextflow.config` file to provide the path to your sample sheet, unless it is `./data/samplesheet.csv` which is the default for the cluster profile. Stay within the top `cluster` profile section to alter settings for Slurm-submitted jobs.
 
 Inside your interactive session, be sure to activate your `nextflow-scrnaseq` environment from above. Then, **inside the scRNAseq folder**, begin the pipeline using the following command (ensuring you use the `cluster` profile to make use of the Slurm workflow manager).
 
