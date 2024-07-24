@@ -238,7 +238,6 @@ Visit [STAR documentation](https://github.com/alexdobin/STAR/) for explanations 
 | *trimgalore*.quality | The minimum quality before a sequence is truncated (default: `20`) |
 | *trimgalore*.adapter | A custom adapter sequence for the R1 sequences (default: `'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'`) |
 | *trimgalore*.adapter2 | A custom adapter sequence for the R2 sequences (default: `'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'`) |
-| *starsolo*.index | The file path to the prepared genome index folder |
 | *starsolo*.soloUMIdedup | The type of UMI deduplication (default: `'1MM_CR'`) |
 | *starsolo*.soloUMIfiltering | The type of UMI filtering for reads uniquely mapping to genes (default: `'MultiGeneUMI_CR'`) |
 | *starsolo*.soloCellFilter | The method type and parameters for cell filtering (default: `'EmptyDrops_CR'`) |
