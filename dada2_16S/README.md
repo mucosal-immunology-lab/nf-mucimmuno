@@ -1,6 +1,6 @@
-# DADA2 16S amplicon sequencing pre-processing
+# DADA2 16S rRNA amplicon sequencing pre-processing
 
-- [DADA2 16S amplicon sequencing pre-processing](#dada2-16s-amplicon-sequencing-pre-processing)
+- [DADA2 16S rRNA amplicon sequencing pre-processing](#dada2-16s-rrna-amplicon-sequencing-pre-processing)
   - [Introduction](#introduction)
   - [Usage](#usage)
     - [Download the repository :open\_file\_folder:](#download-the-repository-open_file_folder)
