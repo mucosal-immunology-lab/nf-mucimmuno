@@ -20,8 +20,9 @@ scRNAseq/.nextflow.log*
 .nextflow/
 .nextflow.log*
 
-# Large files
-*.gz
+# Large sequencing files
+*.fastq.gzs
+*.fa.gz
 
 # Ignore other common files
 *.DS_Store
