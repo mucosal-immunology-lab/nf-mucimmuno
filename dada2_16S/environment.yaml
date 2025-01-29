@@ -1,0 +1,19 @@
+name: nextflow-dada2
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9  # Python version for Nextflow
+  - illumina-utils  # For iu-demultiplex
+  - r-base>=4.1  # Ensure a compatible R version
+  - bioconductor-dada2>=1.30.0  # For quality profiling and analysis
+  - r-ggplot2>=3.5.1  # For generating plots
+  - r-ggpubr  # For arranging plots
+  - r-here  # For handling file paths, if used
+  - r-foreach  # For parallel operations in R
+  - r-doparallel  # To support parallel processing in R
+  - bioconductor-decipher>=2.30.0
+  - r-ips>=0.0.12 # For phylogenetic tree optimisation
+  - conda-forge::r-phangorn>=2.12.1 # For phylogenetic tree building
+  - raxml # For phylogenetic tree optimisation

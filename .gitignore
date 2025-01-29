@@ -1,0 +1,29 @@
+# Ignore directories
+metagenomics/
+
+# Ignore dada2_16S directories and files
+dada2_16S/results/
+dada2_16S/work/
+dada2_16S/data/test_data/
+dada2_16S/.nextflow/
+dada2_16S/.nextflow.log*
+
+# Ignore scRNAseq directories and files
+scRNAseq/results/
+scRNAseq/work/
+scRNAseq/data/raw_fastq/
+scRNAseq/.nextflow/
+scRNAseq/.nextflow.log*
+
+# Ignore Nextflow log files
+.nextflow/
+.nextflow.log*
+
+# Large files
+*.gz
+
+# Ignore other common files
+*.DS_Store
+*.swp
+*.bak
+*.tmp

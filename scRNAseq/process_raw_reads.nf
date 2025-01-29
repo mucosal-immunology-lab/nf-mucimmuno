@@ -7,7 +7,6 @@ include { MULTIQC as MULTIQC_POSTTRIM } from './modules/multiqc/main.nf'
 include { STARSOLO } from './modules/starsolo/main.nf'
 include { COLLECT_EXPORT_FILES } from './modules/collect_export_files/main.nf'
 
-
 workflow {
     // Create input channel from the samplesheet provided through params.samples_csv
     Channel.fromPath(params.samples_csv, checkIfExists:true)

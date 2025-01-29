@@ -10,3 +10,17 @@ dependencies:
   - trim-galore
   - multiqc
   - parallel
+  - r-base
+  - r-seurat
+  - r-soupx
+  - r-here
+  - bioconductor-dropletutils
+  - bioconductor-glmgampoi
+  - scvi-tools
+  - bbknn
+  - scib
+  - numpy
+  - pandas
+  - matplotlib
+  - rpy2
+  - anndata2ri
