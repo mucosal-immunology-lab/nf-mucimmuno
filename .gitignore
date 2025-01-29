@@ -21,7 +21,7 @@ scRNAseq/.nextflow.log*
 .nextflow.log*
 
 # Large sequencing files
-*.fastq.gzs
+*.fastq.gz
 *.fa.gz
 
 # Ignore other common files
