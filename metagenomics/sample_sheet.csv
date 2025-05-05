@@ -1,0 +1,4 @@
+id,fastq_1,fastq_2
+sample1,./data/raw_fastq/sample1.fastq.gz,
+sample2,./data/raw_fastq/sample2_R1.fastq.gz,./data/raw_fastq/sample2_R2.fastq.gz
+sample3,./data/raw_fastq/sample3_R1.fastq.gz,./data/raw_fastq/sample3_R2.fastq.gz

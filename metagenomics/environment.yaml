@@ -1,0 +1,17 @@
+name: nextflow-metaG
+channels:
+  - conda-forge
+  - defaults
+  - bioconda
+dependencies:
+  - nextflow
+  - git>=2.38
+  - fastqc
+  - trim-galore
+  - multiqc
+  - parallel
+  - eclarke::komplexity
+  - bioconda::bbmap
+  - bioconda::bowtie2
+  - bioconda::kraken2
+  - bioconda::bracken
