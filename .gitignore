@@ -1,6 +1,3 @@
-# Ignore directories
-modules/
-
 # Ignore dada2_16S directories and files
 dada2_16S/results/
 dada2_16S/work/

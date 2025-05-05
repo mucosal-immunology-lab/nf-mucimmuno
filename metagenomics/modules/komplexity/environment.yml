@@ -1,0 +1,10 @@
+name: komplexity
+
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  - eclarke::komplexity
+  - bioconda::bbmap
