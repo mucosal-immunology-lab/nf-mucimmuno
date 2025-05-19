@@ -1,0 +1,13 @@
+name: komplexity
+
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  - python
+  - bioconda::humann
+  - bioconda::metaphlan
+  - bioconda::bowtie2
+  - bioconda::diamond

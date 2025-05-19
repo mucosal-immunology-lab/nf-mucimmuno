@@ -4,6 +4,7 @@ channels:
   - defaults
   - bioconda
 dependencies:
+  - python
   - nextflow
   - git>=2.38
   - fastqc
@@ -15,3 +16,6 @@ dependencies:
   - bioconda::bowtie2
   - bioconda::kraken2
   - bioconda::bracken
+  - bioconda::humann
+  - bioconda::metaphlan
+  - bioconda::diamond

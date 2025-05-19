@@ -8,6 +8,7 @@ include { KOMPLEXITY_FILTER } from './modules/komplexity/main.nf'
 include { PREPARE_HOST_GENOME; HOST_DECONTAMINATE } from './modules/host_decontaminate/main.nf'
 include { PREPARE_KRAKEN2_DB; CLASSIFY_KRAKEN2; MERGE_KRAKEN2_REPORTS } from './modules/kraken2/main.nf'
 include { PREPARE_BRACKEN_DB; RUN_BRACKEN_CORRECTION; MERGE_BRACKEN_REPORTS } from './modules/bracken/main.nf'
+include { PREPARE_HUMANN_DATABASES } from './modules/humann/main.nf'
 
 workflow {
     // Create input channel from the samplesheet provided through params.samples_csv
@@ -205,13 +206,13 @@ workflow {
             bracken_db_ch = Channel.value(params.taxonomy.kraken2_db)
         } else {
             log.info "Bracken outputs not found in Kraken2 DB (missing: ${missing.join(', ')}). Running PREPARE_BRACKEN_DB."
-            def prep = PREPARE_BRACKEN_DB( kraken2_db: params.taxonomy.kraken2_db )
+            def prep = PREPARE_BRACKEN_DB()
             bracken_db_ch = prep.bracken_db
         }
     } else {
         log.info "No Kraken2 DB provided or directory not found. Building Bracken DB after Kraken2."
         // Ensure we have kraken2_db_ch defined earlier for the Kraken2 DB
-        def prep = PREPARE_BRACKEN_DB( kraken2_db: kraken2_db_ch )
+        def prep = PREPARE_BRACKEN_DB()
         bracken_db_ch = prep.bracken_db
     }
 
