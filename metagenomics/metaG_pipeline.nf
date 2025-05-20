@@ -107,7 +107,7 @@ workflow {
         and build the Bowtie2 index.
     */
     def hostIndex_ch
-    if (params.decontaminate.hostIndex && file(params.decontaminate.hostIndex + ".1.bt2").exists()) {
+    if (params.decontaminate.hostIndex && file(params.decontaminate.hostIndex + ".1.bt2l").exists()) {
         log.info "Using provided host index from config: ${params.decontaminate.hostIndex}"
         hostIndex_ch = Channel.value(params.decontaminate.hostIndex)
     } else {
@@ -118,7 +118,7 @@ workflow {
         // Collect the output from the process and dynamically determine the prefix
         hostIndex_ch = host_genome_ch.bowtie2_index.map { indexFiles ->
             // Extract the common prefix from the Bowtie2 index files
-            def prefix = indexFiles[0].toString().replaceAll(/\.1\.bt2$/, '')
+            def prefix = indexFiles[0].toString().replaceAll(/\.1\.bt2l$/, '')
             log.info "Generated host index prefix: ${prefix}"
             return prefix
         }

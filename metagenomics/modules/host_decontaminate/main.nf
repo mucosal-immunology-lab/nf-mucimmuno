@@ -38,10 +38,10 @@ process PREPARE_HOST_GENOME {
         echo "Error: bowtie2-build is not installed or not in PATH." >&2
         exit 1
     fi
-    bowtie2-build chm13v2.0_GRCh38_full_plus_decoy.fasta chm13v2.0_GRCh38_full_plus_decoy
+    bowtie2-build chm13v2.0_GRCh38_full_plus_decoy.fasta chm13v2.0_GRCh38_full_plus_decoy --large-index
 
     # Verify that the Bowtie2 index files were created successfully
-    if [ ! -f "chm13v2.0_GRCh38_full_plus_decoy.1.bt2" ]; then
+    if [ ! -f "chm13v2.0_GRCh38_full_plus_decoy.1.bt2l" ]; then
         echo "Error: Bowtie2 index files were not created successfully." >&2
         exit 1
     fi
