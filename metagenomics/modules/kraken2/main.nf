@@ -71,10 +71,11 @@ process PREPARE_KRAKEN2_DB {
     echo "Building the Kraken2 database. This may take some time..."
     "\$KRAKEN2_BUILD" --build --db "\$KRAKEN2_DB" --kmer-len "${params.taxonomy.kmer_length}"
     
-    echo "Cleaning up intermediate files..."
-    "\$KRAKEN2_BUILD" --clean --db "\$KRAKEN2_DB"
-    
     echo "Kraken2 database build completed successfully."
+
+    # Move the database folder up to the work directory
+    cd ..
+    mv "\$KRAKEN2_DIR/\$KRAKEN2_DB" .
     """
 }
 
@@ -107,7 +108,7 @@ process CLASSIFY_KRAKEN2 {
 
     if [ "${meta.single_end}" = "true" ]; then
         echo "Classifying single-end reads for sample ${prefix}..."
-        kraken2 \$K2_ARGS --gzip-compressed -U ${reads[0]}
+        kraken2 \$K2_ARGS --gzip-compressed ${reads[0]}
     else
         echo "Classifying paired-end reads for sample ${prefix}..."
         kraken2 \$K2_ARGS --gzip-compressed --paired -1 ${reads[0]} -2 ${reads[1]}

@@ -7,9 +7,13 @@ process PREPARE_BRACKEN_DB {
 
     conda "${moduleDir}/environment.yaml"
 
+    input:
+        // Collect the Kraken2 database path
+        val(kraken2_db_ch)
+
     output:
         // Emit the directory containing the .kmer_distrib files
-        path "bracken_database", emit: bracken_db
+        val(kraken2_db_ch), emit: bracken_db
 
     script:
     """
@@ -19,7 +23,7 @@ process PREPARE_BRACKEN_DB {
 
     # Run bracken-build with read length, threads, and output folder
     bracken-build \\
-        -d ${params.taxonomy.kraken2_db} \\
+        -d ${kraken2_db_ch} \\
         -t ${task.cpus} \\
         -l ${params.taxonomy.kmer_length}
 
@@ -36,6 +40,7 @@ process RUN_BRACKEN_CORRECTION {
 
     input:
     tuple val(meta), path(krakenReport)
+    val(bracken_db_ch)
 
     output:
     tuple val(meta), path("${meta.id}_bracken_report.tsv"), emit: bracken_report
@@ -48,7 +53,7 @@ process RUN_BRACKEN_CORRECTION {
 
     # Run Bracken to re-estimate abundances at the desired taxonomic level
     bracken \
-        -d ${params.taxonomy.kraken2_db} \
+        -d ${bracken_db_ch} \
         -i ${krakenReport} \
         -o ${prefix}_bracken_report.tsv \
         -r ${params.taxonomy.kmer_length} \

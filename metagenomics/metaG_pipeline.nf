@@ -206,19 +206,19 @@ workflow {
             bracken_db_ch = Channel.value(params.taxonomy.kraken2_db)
         } else {
             log.info "Bracken outputs not found in Kraken2 DB (missing: ${missing.join(', ')}). Running PREPARE_BRACKEN_DB."
-            def prep = PREPARE_BRACKEN_DB()
+            def prep = PREPARE_BRACKEN_DB(kraken2_db_ch)
             bracken_db_ch = prep.bracken_db
         }
     } else {
         log.info "No Kraken2 DB provided or directory not found. Building Bracken DB after Kraken2."
         // Ensure we have kraken2_db_ch defined earlier for the Kraken2 DB
-        def prep = PREPARE_BRACKEN_DB()
+        def prep = PREPARE_BRACKEN_DB(kraken2_db_ch)
         bracken_db_ch = prep.bracken_db
     }
 
     // Run Bracken correction
     bracken_report = Channel.empty()
-    ch_bracken = RUN_BRACKEN_CORRECTION(kraken2_report)
+    ch_bracken = RUN_BRACKEN_CORRECTION(kraken2_report, bracken_db_ch)
     bracken_report = ch_bracken.bracken_report
 
     // Extract just the report file paths, and collect them
