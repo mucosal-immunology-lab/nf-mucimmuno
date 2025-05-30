@@ -1,7 +1,7 @@
 process TRIMGALORE {
     tag "$meta.id"
     label 'process_high'
-    conda "./environment.yaml"
+    conda "${projectDir}/environment.yaml"
 
     input:
     tuple val(meta), path(reads)
