@@ -1,4 +1,4 @@
-name: komplexity
+name: humann_env
 
 channels:
   - conda-forge
@@ -8,6 +8,6 @@ channels:
 dependencies:
   - python
   - bioconda::humann
-  - bioconda::metaphlan
+  - bioconda::metaphlan>=4
   - bioconda::bowtie2
   - bioconda::diamond

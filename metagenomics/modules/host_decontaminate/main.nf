@@ -1,8 +1,7 @@
 process PREPARE_HOST_GENOME {
     tag "PrepareHostGenome"
     publishDir "$params.outdir/hostIndex", mode: 'copy'
-
-    conda "${moduleDir}/environment.yaml"
+    conda "./environment.yaml"
 
     output:
         path "chm13v2.0_GRCh38_full_plus_decoy.fasta", emit: hostFasta
@@ -51,7 +50,7 @@ process PREPARE_HOST_GENOME {
 process HOST_DECONTAMINATE {
     tag "$meta.id"
     label 'process_high'
-    conda "${moduleDir}/environment.yml"
+    conda "./environment.yaml"
 
     // Publish decontaminated FASTQ files to $params.outdir/decontam
     publishDir "$params.outdir/decontam", mode: 'copy', pattern: "*_decontam.fq.gz"

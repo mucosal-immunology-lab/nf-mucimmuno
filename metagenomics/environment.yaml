@@ -17,5 +17,4 @@ dependencies:
   - bioconda::kraken2
   - bioconda::bracken
   - bioconda::humann
-  - bioconda::metaphlan
   - bioconda::diamond

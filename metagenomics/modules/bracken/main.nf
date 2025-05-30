@@ -1,11 +1,10 @@
 process PREPARE_BRACKEN_DB {
     tag "prepare_bracken_db"
     label 'process_high'
+    conda "./environment.yaml"
 
     // Copy the final Bracken database directory out
     publishDir "$params.outdir/bracken_db", mode: 'copy'
-
-    conda "${moduleDir}/environment.yaml"
 
     input:
         // Collect the Kraken2 database path
@@ -34,9 +33,7 @@ process PREPARE_BRACKEN_DB {
 process RUN_BRACKEN_CORRECTION {
     tag "$meta.id"
     label 'process_high'
-
-    // Conda environment with bracken installed
-    conda "${moduleDir}/environment.yaml"
+    conda "./environment.yaml"
 
     input:
     tuple val(meta), path(krakenReport)
@@ -64,7 +61,7 @@ process RUN_BRACKEN_CORRECTION {
 process MERGE_BRACKEN_REPORTS {
     tag "merge_bracken_reports"
     label 'process_high'
-    conda "${moduleDir}/environment.yaml"
+    conda "./environment.yaml"
 
     // Publish the combined Kraken2 report into the kraken2 results folder
     publishDir "$params.outdir/bracken", mode: 'copy'

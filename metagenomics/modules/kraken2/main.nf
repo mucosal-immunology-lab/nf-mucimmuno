@@ -1,8 +1,7 @@
 process PREPARE_KRAKEN2_DB {
     tag "prepare_kraken2_db"
     publishDir "$params.outdir/kraken2_db", mode: 'copy'
-
-    conda "${moduleDir}/environment.yaml"
+    conda "./environment.yaml"
 
     output:
         // Emit the completed Kraken2 database directory.
@@ -82,7 +81,7 @@ process PREPARE_KRAKEN2_DB {
 process CLASSIFY_KRAKEN2 {
     tag "$meta.id"
     label 'process_high'
-    conda "${moduleDir}/environment.yaml"
+    conda "./environment.yaml"
 
     // Publish classification outputs
     publishDir "$params.outdir/kraken2", mode: 'copy', pattern: "*.{kraken,report,versions.yml}"
@@ -129,7 +128,7 @@ process CLASSIFY_KRAKEN2 {
 process MERGE_KRAKEN2_REPORTS {
     tag "merge_kraken2_reports"
     label 'process_high'
-    conda "${moduleDir}/environment.yaml"
+    conda "./environment.yaml"
 
     // Publish the combined Kraken2 report into the kraken2 results folder
     publishDir "$params.outdir/kraken2", mode: 'copy'

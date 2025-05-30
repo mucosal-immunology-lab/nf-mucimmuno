@@ -1,7 +1,0 @@
-name: decontaminate
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - bioconda::bowtie2
