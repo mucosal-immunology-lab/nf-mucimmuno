@@ -64,6 +64,17 @@ process STARSOLO {
                 "--soloUMIposition 3_10_3_17 " +
                 "--soloAdapterSequence NNNNNNNNNGTGANNNNNNNNNGACA ";
             break;
+        case "10X_Chromium_V1":
+            solo_args = "--soloType CB_UMI_Simple " +
+                "--soloCBmatchWLtype 1MM multi Nbase pseudocounts " +
+                "--soloCBwhitelist \"${moduleDir}/CLS/10X_Chromium_V1/737K-april-2014_rc.txt\" " +
+                "--clipAdapterType CellRanger4 " +
+                "--soloBarcodeReadLength 0 " +
+                "--soloCBstart 1 " +
+                "--soloCBlen 14 " +
+                "--soloUMIstart 15 " +
+                "--soloUMIlen 10 ";
+            break;
         case "10X_Chromium_V2":
             solo_args = "--soloType CB_UMI_Simple " +
                 "--soloCBmatchWLtype 1MM multi Nbase pseudocounts " +
@@ -85,6 +96,30 @@ process STARSOLO {
                 "--soloCBlen 16 " +
                 "--soloUMIstart 17 " +
                 "--soloUMIlen 12 ";
+            break;
+        case "SeqWell":
+            solo_args = "--soloType CB_UMI_Simple " +
+                "--soloCBmatchWLtype 1MM multi Nbase pseudocounts " +
+                "--soloCBwhitelist None " +
+                "--clipAdapterType CellRanger4 " +
+				"--soloStrand Unstranded " +
+                "--soloBarcodeReadLength 0 " +
+                "--soloCBstart 1 " +
+                "--soloCBlen 12 " +
+                "--soloUMIstart 13 " +
+                "--soloUMIlen 8 ";
+            break;
+        case "DropSeq":
+            solo_args = "--soloType CB_UMI_Simple " +
+                "--soloCBmatchWLtype 1MM multi Nbase pseudocounts " +
+                "--soloCBwhitelist None " +
+                "--clipAdapterType CellRanger4 " +
+				"--soloStrand Unstranded " +
+                "--soloBarcodeReadLength 0 " +
+                "--soloCBstart 1 " +
+                "--soloCBlen 12 " +
+                "--soloUMIstart 13 " +
+                "--soloUMIlen 8 ";
             break;
     }
 
