@@ -17,3 +17,4 @@ dependencies:
   - bowtie2
   - kraken2
   - bracken
+  - humann
