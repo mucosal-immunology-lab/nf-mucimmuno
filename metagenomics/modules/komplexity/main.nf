@@ -1,7 +1,6 @@
 process KOMPLEXITY_FILTER {
     tag "$meta.id"
     label 'process_high'
-    conda "${projectDir}/environment.yaml"
 
     input:
     tuple val(meta), path(reads)

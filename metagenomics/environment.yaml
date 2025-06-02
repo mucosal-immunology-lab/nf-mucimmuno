@@ -1,8 +1,9 @@
 name: nextflow-metaG
 channels:
   - conda-forge
-  - defaults
   - bioconda
+  - eclarke
+  - defaults
 dependencies:
   - python
   - nextflow
@@ -13,8 +14,6 @@ dependencies:
   - parallel
   - eclarke::komplexity
   - bioconda::bbmap
-  - bioconda::bowtie2
-  - bioconda::kraken2
-  - bioconda::bracken
-  - bioconda::humann
-  - bioconda::diamond
+  - bowtie2
+  - kraken2
+  - bracken

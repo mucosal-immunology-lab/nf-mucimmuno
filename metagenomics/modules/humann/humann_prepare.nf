@@ -3,7 +3,6 @@ process PREPARE_HUMANN_DATABASES {
     label 'process_high'
 
     publishDir "$params.outdir/humann_db", mode: 'copy'
-    conda "${moduleDir}/environment.yaml"
 
     output:
       path "humann_db", emit: humann_db
@@ -89,7 +88,6 @@ process UPDATE_HUMANN_CONFIG {
     tag "update_humann_config"
     label 'process_high'
     errorStrategy 'terminate'
-    conda "${moduleDir}/environment.yaml"
 
     input:
         /// the base HUMAnN3 database folder provided by the user
@@ -122,7 +120,6 @@ process UPDATE_HUMANN_CONFIG {
 process PREPARE_METAPHLAN_DB {
   tag "prepare_metaphlan_db"
   publishDir "$params.outdir/metaphlan_db", mode: 'copy'
-  conda "${moduleDir}/environment.yaml"
 
   output:
   path "metaphlan_db", emit: metaphlan_db
@@ -138,8 +135,6 @@ process PREPARE_METAPHLAN_DB {
 process MERGE_READS {
     tag "${meta.id}"
     label 'process_high'
-
-    conda "${moduleDir}/environment.yaml"
     
     input:
       tuple val(meta), path(reads)

@@ -1,7 +1,6 @@
 process FASTQC {
     tag "$meta.id"
     label 'process_medium'
-    conda "${projectDir}/environment.yaml"
 
     input:
     tuple val(meta), path(reads)

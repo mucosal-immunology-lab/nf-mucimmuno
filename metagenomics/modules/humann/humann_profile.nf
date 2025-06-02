@@ -1,7 +1,6 @@
 process HUMANN_PROFILE {
     tag { meta.id }
     label 'process_high'
-    conda "${moduleDir}/environment.yaml"
 
     input:
       tuple val(meta), path(merged_fastq)

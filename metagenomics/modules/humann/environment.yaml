@@ -1,13 +1,11 @@
 name: humann_env
-
 channels:
+  - biobakery
   - conda-forge
   - bioconda
   - defaults
-
 dependencies:
   - python
-  - bioconda::humann
-  - bioconda::metaphlan>=4
-  - bioconda::bowtie2
-  - bioconda::diamond
+  - humann
+  - bowtie2
+  - diamond
