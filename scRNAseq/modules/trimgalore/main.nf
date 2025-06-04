@@ -43,11 +43,20 @@ process TRIMGALORE {
         case "BD_Enhanced_V2":
             trimgalore_length = 43;
             break;
+        case "10X_Chromium_V1":
+            trimgalore_length = 24;
+            break;
         case "10X_Chromium_V2":
             trimgalore_length = 26;
             break;
         case "10X_Chromium_V3":
             trimgalore_length = 28;
+            break;
+        case "SeqWell":
+            trimgalore_length = 20;
+            break;
+        case "DropWell":
+            trimgalore_length = 20;
             break;
     }
 
