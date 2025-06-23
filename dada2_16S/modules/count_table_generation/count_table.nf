@@ -71,7 +71,7 @@ process MERGE_SEQTABS {
     library(dplyr)
 
     # File paths to sequence tables
-    seqtab.fps <- c("/mnt/GDrive_01/Monash/33_GitHub/nf-mucimmuno/dada2_16S/work/17/d33ae64ccfb4dec2e14d4f5a6c2bb8/run_02_filtered/seqtab.rds", "/mnt/GDrive_01/Monash/33_GitHub/nf-mucimmuno/dada2_16S/work/e8/83a1a0c4d356843f303999592a2849/run_01_filtered/seqtab.rds")
+    seqtab.fps <- c(${ seqtab_files.collect{ "\"$it\"" }.join(", ") })
 
     # Validate the presence of sequence table files
     if (length(seqtab.fps) == 0) {
