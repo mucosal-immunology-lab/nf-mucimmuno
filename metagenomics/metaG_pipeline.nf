@@ -8,8 +8,6 @@ include { KOMPLEXITY_FILTER } from './modules/komplexity/main.nf'
 include { PREPARE_HOST_GENOME; HOST_DECONTAMINATE } from './modules/host_decontaminate/main.nf'
 include { PREPARE_KRAKEN2_DB; CLASSIFY_KRAKEN2; MERGE_KRAKEN2_REPORTS } from './modules/kraken2/main.nf'
 include { PREPARE_BRACKEN_DB; RUN_BRACKEN_CORRECTION; MERGE_BRACKEN_REPORTS } from './modules/bracken/main.nf'
-include { PREPARE_HUMANN_DATABASES; UPDATE_HUMANN_CONFIG; PREPARE_METAPHLAN_DB; MERGE_READS } from './modules/humann/humann_prepare.nf'
-include { HUMANN_PROFILE } from './modules/humann/humann_profile.nf'
 
 workflow {
     // Create input channel from the samplesheet provided through params.samples_csv
