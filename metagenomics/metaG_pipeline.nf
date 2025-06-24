@@ -237,48 +237,4 @@ workflow {
     bracken_merged_report = Channel.empty()
     ch_bracken_merge = MERGE_BRACKEN_REPORTS(bracken_reports, bracken_sample_ids)
     bracken_merged_report = ch_bracken_merge.combined_report
-
-    // ================================================================
-    // R U N    H U M A N N   F U N C T I O N A L   A S S I G N M E N T
-    // ================================================================
-
-    def humann_db_ch
-
-    if ( params.humann.db_path && file(params.humann.db_path).isDirectory() ) {
-        // User pointed to an existing folder on disk
-        def dbDir    = file(params.humann.db_path)
-        def required = ['chocophlan','uniref','utility_mapping']
-        def missing  = required.findAll { sub ->
-            ! dbDir.resolve(sub).isDirectory()
-        }
-
-        if ( missing.empty ) {
-            log.info "Using existing HUMAnN3 DB at: ${params.humann.db_path}"
-            humann_db_ch = Channel.value(params.humann.db_path)
-            // Update the HUMAnN database folders
-            humann_db_ch = UPDATE_HUMANN_CONFIG(humann_db_ch)
-        }
-        else {
-            log.info "HUMAnN3 DB incomplete (missing: ${missing.join(', ')}); running PREPARE_HUMANN_DATABASES."
-            def prep = PREPARE_HUMANN_DATABASES()
-            humann_db_ch = prep.humann_db
-        }
-    }
-    else {
-        log.info "No valid HUMAnN3 DB provided. Preparing databases."
-        def prep = PREPARE_HUMANN_DATABASES()
-        humann_db_ch = prep.humann_db
-    }
-
-    // Prepare the Metaphlan database
-    def metaphlan_db = Channel.empty()
-    metaphlan_db = PREPARE_METAPHLAN_DB()
-
-    // Merge reads together into a single FASTQ input for HUMAnN
-    def merged_reads_ch = Channel.empty()
-    merged_reads_ch = MERGE_READS(host_decontam_reads)
-
-    // 1. Profile the reads using HUMAnN
-    def profiled_ch = Channel.empty()
-    profiled_ch = HUMANN_PROFILE(merged_reads_ch, metaphlan_db, humann_db_ch)
 }

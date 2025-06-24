@@ -19,6 +19,9 @@ metagenomics/data/raw_fastq/
 metagenomics/.nextflow/
 metagenomics/.nextflow.log*
 
+# Ignore humann3 directories and files
+metagenomics-humann
+
 # Ignore Nextflow log files
 .nextflow/
 .nextflow.log*
