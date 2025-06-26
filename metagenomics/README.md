@@ -244,17 +244,17 @@ results/
     │   ├── sample1_bowtie2.log
     │   ├── sample2_bowtie2.log
     │   └── ...
-    ├── kraken2_database/
-    │   ├── database.kraken
+    ├── kraken2_database/ # ~470 GB
+    │   ├── database.kraken # 50.2 GB
     │   ├── database35mers.kmer_distrib
     │   ├── database35mers.kraken
-    │   ├── hash.k2d
+    │   ├── hash.k2d # 90.9 GB
     │   ├── opts.k2d
     │   ├── seqid2taxid.map
     │   ├── taxo.k2d
     │   ├── library/ ...
     │   └── taxonomy/ ...
-    ├── hostIndex/
+    ├── hostIndex/ # ~18.2 GB
     │   ├── chm13v2.0_GRCh38_full_plus_decoy.1.bt2l
     │   ├── chm13v2.0_GRCh38_full_plus_decoy.2.bt2l
     │   ├── chm13v2.0_GRCh38_full_plus_decoy.3.bt2l
