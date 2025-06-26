@@ -6,6 +6,7 @@ Additionally, we may provide additional tools and code for further downstream pr
 
 - [Nextflow Workflows](#nextflow-workflows)
   - [Single-cell RNAseq FASTQ pre-processing](#single-cell-rnaseq-fastq-pre-processing)
+  - [Shotgun metagenomics FASTQ pre-processing](#shotgun-metagenomics-fastq-pre-processing)
   - [DADA2 16S rRNA amplicon sequencing pre-processing](#dada2-16s-rrna-amplicon-sequencing-pre-processing)
 
 
@@ -15,6 +16,14 @@ Additionally, we may provide additional tools and code for further downstream pr
 
 <div align="center">
 <img src="./assets/images/nf-mucimmuno_scRNAseq-01.png" width=80%>
+</div>
+
+## Shotgun metagenomics FASTQ pre-processing
+
+[**nf-mucimmuno/metagenomics**](./metagenomics/) is a bioinformatics pipeline for raw shotgun metagenomics sequencing data that streamlines quality control and trimming, removal of low complexity reads, host decontamination, taxonomic assignment, and abundance correction.
+
+<div align="center">
+<img src="./assets/images/nf-mucimmuno_metagenomics.png" width=80%>
 </div>
 
 ## DADA2 16S rRNA amplicon sequencing pre-processing
