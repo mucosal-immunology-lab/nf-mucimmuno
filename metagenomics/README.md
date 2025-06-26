@@ -197,8 +197,8 @@ To adjust the `cluster` profile settings, stay within the appropriate section at
 | *PREPARE_KRAKEN2_DB*.memory | Memory for PREPARE_KRAKEN2_DB step to use (default: `'120 GB'`) |
 | *PREPARE_KRAKEN2_DB*.cpus | Number of CPUs for PREPARE_KRAKEN2_DB step to use (default: `'24'`) |
 | *PREPARE_KRAKEN2_DB*.clusterOptions | Specific cluster options for PREPARE_KRAKEN2_DB step to use (default: `'--time=24:00:00'`) |
-| *CLASSIFY_KRAKEN2*.memory | Memory for CLASSIFY_KRAKEN2 step to use (default: `'80 GB'`) |
-| *CLASSIFY_KRAKEN2*.cpus | Number of CPUs for CLASSIFY_KRAKEN2 step to use (default: `'12'`) |
+| *CLASSIFY_KRAKEN2*.memory | Memory for CLASSIFY_KRAKEN2 step to use (default: `'120 GB'`) |
+| *CLASSIFY_KRAKEN2*.cpus | Number of CPUs for CLASSIFY_KRAKEN2 step to use (default: `'16'`) |
 | *CLASSIFY_KRAKEN2*.clusterOptions | Specific cluster options for CLASSIFY_KRAKEN2 step to use (default: `'--time=4:00:00 --partition=genomics --partition=genomics'`) |
 | *MERGE_KRAKEN2_REPORTS*.memory | Memory for MERGE_KRAKEN2_REPORTS step to use (default: `'40 GB'`) |
 | *MERGE_KRAKEN2_REPORTS*.cpus | Number of CPUs for MERGE_KRAKEN2_REPORTS step to use (default: `'6'`) |
