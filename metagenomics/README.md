@@ -1,18 +1,18 @@
 # Shotgun metagenomics sequencing pre-processing
 
 - [Shotgun metagenomics sequencing pre-processing](#shotgun-metagenomics-sequencing-pre-processing)
-  - [Introduction](#introduction)
+  - [Introduction 📖](#introduction-)
   - [Usage](#usage)
     - [Download the repository :open\_file\_folder:](#download-the-repository-open_file_folder)
     - [Create the conda environment :snake:](#create-the-conda-environment-snake)
-    - [Folder structure](#folder-structure)
+    - [Setting up your folders 🗂️](#setting-up-your-folders-️)
     - [Prepare your sample sheet :pencil:](#prepare-your-sample-sheet-pencil)
     - [Running the pipeline :running:](#running-the-pipeline-running)
       - [Customisation :gear:](#customisation-gear)
-  - [Outputs](#outputs)
-    - [Folder structure](#folder-structure-1)
+  - [Outputs 📤](#outputs-)
+    - [Folder structure 🗂️](#folder-structure-️)
 
-## Introduction
+## Introduction 📖
 
 **nf-mucimmuno/metagenomics** is a bioinformatics pipeline that can be used for pre-processing of shotgun metagenomics sequencing reads. It takes a sample sheet and raw sequencing `.fastq.gz` files, performs quality profiling, filtering and trimming, removal of low complexity reads, and host decontamination. Reads are then assigned taxonomic classifications using Kraken2 and abundance-corrected via Bracken.
 
@@ -91,7 +91,7 @@ mamba env create -f environment.yaml
 mamba activate nextflow-metaG
 ```
 
-### Folder structure
+### Setting up your folders 🗂️
 
 Because you specify the full directory path for your raw input data, you can technically house them however and wherever you like. However, below is an example of how to store your raw sequencing files.
 
@@ -209,7 +209,7 @@ To adjust the `cluster` profile settings, stay within the appropriate section at
 
 The required resources may vary for your particular data, and can be adjusted as needed. The database creation steps take a long time and a lot of resources to run. These steps really do benefit/require utilisation of a cluster environment.
 
-## Outputs
+## Outputs 📤
 
 Several outputs will be copied from their respective Nextflow `work` directories to the output folder of your choice (default: `results`).
 
@@ -220,7 +220,7 @@ The main outputs of interest for downstream processing are your Bracken-correcte
 | `filtered_combined_bracken_report.tsv` | The Bracken-corrected clean counts table matrix |
 | `decontam/` | A folder containing all of your trimmed, decontaminated `.fastq.gz` files &ndash; these can be used for other pipelines such as HUMAnN3 functional profiling. |
 
-### Folder structure
+### Folder structure 🗂️
 
 There are also a collection of quality control outputs and database files (if you didn't provide them to the pipeline) available in this directory too. If the pipeline generated the databases for you, it is recommended that you move these somewhere else so you can use them in future to save yourself some time. Below is an example of the output structure after running the pipeline.
 
