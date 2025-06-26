@@ -252,8 +252,8 @@ results/
     │   ├── opts.k2d
     │   ├── seqid2taxid.map
     │   ├── taxo.k2d
-    │   ├── library/ ...
-    │   └── taxonomy/ ...
+    │   ├── library/ ... # ~ 223 GB
+    │   └── taxonomy/ ... # ~ 46.4 GB
     ├── hostIndex/ # ~18.2 GB
     │   ├── chm13v2.0_GRCh38_full_plus_decoy.1.bt2l
     │   ├── chm13v2.0_GRCh38_full_plus_decoy.2.bt2l
