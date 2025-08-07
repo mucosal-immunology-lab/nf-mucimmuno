@@ -135,12 +135,12 @@ Now you can run the pipeline. You will need to set up a parent job to run each o
 
 ```bash
 # Start an interactive session with minimal resources
-smux n --time=3-00:00:00 --mem=16GB --ntasks=1 --cpuspertask=2 -J nf-STARsolo
+smux n --time=3-00:00:00 --mem=16GB --ntasks=1 --cpuspertask=2 -J nf-dada2
 ```
 
-Make sure you alter the `nextflow.config` file to provide the path to your sample sheet, unless it is `./samplesheet.csv` which is the default for the cluster profile. Stay within the top `cluster` profile section to alter settings for Slurm-submitted jobs.
+Make sure you alter the `nextflow.config` file to provide the path to your sample sheet, unless it is `./sample_sheet.csv` which is the default for the cluster profile. Stay within the top `cluster` profile section to alter settings for Slurm-submitted jobs.
 
-Inside your interactive session, be sure to activate your `nextflow-scrnaseq` environment from above. Then, **inside the scRNAseq folder**, begin the pipeline using the following command (ensuring you use the `cluster` profile to make use of the Slurm workflow manager).
+Inside your interactive session, be sure to activate your `nextflow-dada2` environment from above. Then, **inside the dada2 folder**, begin the pipeline using the following command (ensuring you use the `cluster` profile to make use of the Slurm workflow manager).
 
 ```bash
 # Activate conda environment
