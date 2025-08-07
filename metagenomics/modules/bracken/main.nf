@@ -93,6 +93,7 @@ process MERGE_BRACKEN_REPORTS {
     # Filter the combined report
     python3 ${moduleDir}/filter_bracken_report.py \
         -i combined_bracken_report.tsv \
-        -o filtered_combined_bracken_report.tsv
+        -o filtered_combined_bracken_report.tsv \
+        --taxonomy-db ${params.taxonomy.kraken2_db}
     """
 }
