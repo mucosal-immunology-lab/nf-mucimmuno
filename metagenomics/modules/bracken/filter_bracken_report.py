@@ -4,7 +4,6 @@ import argparse
 import os
 import sys
 
-
 def load_taxonomy(db_path):
     """Load taxonomy nodes and names from a Kraken2/Bracken database."""
     nodes_path = os.path.join(db_path, "taxonomy", "nodes.dmp")
@@ -34,15 +33,15 @@ def load_taxonomy(db_path):
 
     return parents, ranks, names
 
-
 def lineage_for_taxid(taxid, parents, ranks, names, desired_ranks):
     lineage = {r: "" for r in desired_ranks}
     current = taxid
     visited = set()
     while current in parents and current not in visited:
         rank = ranks.get(current)
-        if rank in desired_ranks and not lineage[rank]:
-            lineage[rank] = names.get(current, "")
+        rank_key = "kingdom" if rank == "superkingdom" else rank
+        if rank_key in desired_ranks and not lineage[rank_key]:
+            lineage[rank_key] = names.get(current, "")
             if all(lineage[r] for r in desired_ranks):
                 break
         visited.add(current)
@@ -52,10 +51,9 @@ def lineage_for_taxid(taxid, parents, ranks, names, desired_ranks):
         current = parent
     return lineage
 
-
 def main():
     p = argparse.ArgumentParser(
-        description="Slim down a combined Bracken report and append higher-level taxonomy ranks.",
+        description="Slim down a combined Bracken report and append higher-level taxonomy ranks (genus through kingdom).",
     )
     p.add_argument("-i", "--input", required=True,
                    help="Combined Bracken TSV input file")
@@ -66,7 +64,7 @@ def main():
     args = p.parse_args()
 
     parents, ranks, names = load_taxonomy(args.taxonomy_db)
-    desired_ranks = ["genus", "family", "order", "class", "phylum"]
+    desired_ranks = ["genus", "family", "order", "class", "phylum", "kingdom"]
 
     # Open input and read all rows
     with open(args.input, newline="") as inf:
@@ -112,7 +110,6 @@ def main():
             for ci in num_cols:
                 outrow.append(row[ci])
             writer.writerow(outrow)
-
 
 if __name__ == "__main__":
     main()
