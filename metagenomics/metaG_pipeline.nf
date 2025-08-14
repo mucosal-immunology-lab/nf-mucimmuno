@@ -162,33 +162,6 @@ workflow {
         kraken2_db_ch = kraken2_db_path.kraken2_db
     }
 
-    // Run Kraken2 classification
-    kraken2_classification = Channel.empty()
-    kraken2_report = Channel.empty()
-    ch_kraken2 = CLASSIFY_KRAKEN2(host_decontam_reads, kraken2_db_ch)
-    kraken2_classification = ch_kraken2.kraken
-    kraken2_report = ch_kraken2.report
-
-    // Extract just the report file paths, and collect them
-    kraken2_report_paths = kraken2_report.map { meta, rpt -> rpt }
-    kraken2_report_paths
-        .collect()
-        .set { kraken_reports }
-        
-    // Extract only the IDs, then collect them into a single list
-    kraken2_sample_ids = kraken2_report
-        .map { meta, rpt -> meta.id }
-        .collect()
-
-    // Merge kraken reports together
-    kraken2_merged_report = Channel.empty()
-    ch_kraken2_merge = MERGE_KRAKEN2_REPORTS(kraken_reports, kraken2_sample_ids)
-    kraken2_merged_report = ch_kraken2_merge.combined_report
-
-    // ================================================================
-    // R U N    B R A C K E N   T A X O N O M I C   A S S I G N M E N T
-    // ================================================================
-
     def bracken_db_ch
     if ( params.taxonomy.kraken2_db && file(params.taxonomy.kraken2_db).isDirectory() ) {
         def k2db = file(params.taxonomy.kraken2_db)
@@ -214,6 +187,33 @@ workflow {
         def prep = PREPARE_BRACKEN_DB(kraken2_db_ch)
         bracken_db_ch = prep.bracken_db
     }
+
+    // Run Kraken2 classification
+    kraken2_classification = Channel.empty()
+    kraken2_report = Channel.empty()
+    ch_kraken2 = CLASSIFY_KRAKEN2(host_decontam_reads, bracken_db_ch)
+    kraken2_classification = ch_kraken2.kraken
+    kraken2_report = ch_kraken2.report
+
+    // Extract just the report file paths, and collect them
+    kraken2_report_paths = kraken2_report.map { meta, rpt -> rpt }
+    kraken2_report_paths
+        .collect()
+        .set { kraken_reports }
+        
+    // Extract only the IDs, then collect them into a single list
+    kraken2_sample_ids = kraken2_report
+        .map { meta, rpt -> meta.id }
+        .collect()
+
+    // Merge kraken reports together
+    kraken2_merged_report = Channel.empty()
+    ch_kraken2_merge = MERGE_KRAKEN2_REPORTS(kraken_reports, kraken2_sample_ids)
+    kraken2_merged_report = ch_kraken2_merge.combined_report
+
+    // ================================================================
+    // R U N    B R A C K E N   T A X O N O M I C   A S S I G N M E N T
+    // ================================================================
 
     // Run Bracken correction
     bracken_report = Channel.empty()

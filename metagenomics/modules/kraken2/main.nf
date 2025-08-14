@@ -108,7 +108,7 @@ process CLASSIFY_KRAKEN2 {
         kraken2 \$K2_ARGS --gzip-compressed ${reads[0]}
     else
         echo "Classifying paired-end reads for sample ${prefix}..."
-        kraken2 \$K2_ARGS --gzip-compressed --paired -1 ${reads[0]} -2 ${reads[1]}
+        kraken2 \$K2_ARGS --gzip-compressed --paired ${reads[0]} ${reads[1]}
     fi
 
     # Validate outputs
