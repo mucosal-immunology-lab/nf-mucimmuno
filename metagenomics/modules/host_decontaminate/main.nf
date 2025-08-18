@@ -2,14 +2,45 @@ process PREPARE_HOST_GENOME {
     tag "PrepareHostGenome"
     publishDir "$params.outdir/hostIndex", mode: 'copy'
 
+    // Determine which host genome to prepare (human or mouse)
+    def host = params.decontaminate.host ?: 'human'
+    def fasta_name   = host == 'mouse' ? 'GRCm39.fa' : 'chm13v2.0_GRCh38_full_plus_decoy.fasta'
+    def index_prefix = host == 'mouse' ? 'GRCm39'   : 'chm13v2.0_GRCh38_full_plus_decoy'
+
     output:
-        path "chm13v2.0_GRCh38_full_plus_decoy.fasta", emit: hostFasta
-        path "chm13v2.0_GRCh38_full_plus_decoy.*", emit: bowtie2_index
+        path fasta_name, emit: hostFasta
+        path "${index_prefix}.*", emit: bowtie2_index
 
     script:
+    if (host == 'mouse') {
+    """
+    # Check if the mouse genome file exists
+    if [ ! -f ${fasta_name} ]; then
+        echo "Downloading the GRCm39 mouse genome..."
+        wget -c https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M33/GRCm39.primary_assembly.genome.fa.gz
+        gzip -d GRCm39.primary_assembly.genome.fa.gz
+        mv GRCm39.primary_assembly.genome.fa ${fasta_name}
+        echo "Finished preparing the mouse genome."
+    else
+        echo "Host genome file already exists. Skipping download."
+    fi
+
+    echo "Indexing the host genome with bowtie2-build..."
+    if ! command -v bowtie2-build &> /dev/null; then
+        echo "Error: bowtie2-build is not installed or not in PATH." >&2
+        exit 1
+    fi
+    bowtie2-build ${fasta_name} ${index_prefix} --large-index
+
+    if [ ! -f "${index_prefix}.1.bt2l" ]; then
+        echo "Error: Bowtie2 index files were not created successfully." >&2
+        exit 1
+    fi
+    """
+    } else {
     """
     # Check if the combined host genome file exists
-    if [ ! -f chm13v2.0_GRCh38_full_plus_decoy.fasta ]; then
+    if [ ! -f ${fasta_name} ]; then
         echo "Downloading the CHM13 human genome..."
         wget -c https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/analysis_set/chm13v2.0.fa.gz
         gzip -d chm13v2.0.fa.gz
@@ -21,7 +52,7 @@ process PREPARE_HOST_GENOME {
         wget -c http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/GRCh38_full_analysis_set_plus_decoy_hla.fa
 
         echo "Combining CHM13 and 1000 Genomes genomes..."
-        cat chm13v2.0_modified.fasta GRCh38_full_analysis_set_plus_decoy_hla.fa > chm13v2.0_GRCh38_full_plus_decoy.fasta
+        cat chm13v2.0_modified.fasta GRCh38_full_analysis_set_plus_decoy_hla.fa > ${fasta_name}
 
         echo "Cleaning up intermediate files..."
         rm -rf chm13v2.0.fa chm13v2.0_modified.fasta GRCh38_full_analysis_set_plus_decoy_hla.fa
@@ -36,14 +67,15 @@ process PREPARE_HOST_GENOME {
         echo "Error: bowtie2-build is not installed or not in PATH." >&2
         exit 1
     fi
-    bowtie2-build chm13v2.0_GRCh38_full_plus_decoy.fasta chm13v2.0_GRCh38_full_plus_decoy --large-index
+    bowtie2-build ${fasta_name} ${index_prefix} --large-index
 
     # Verify that the Bowtie2 index files were created successfully
-    if [ ! -f "chm13v2.0_GRCh38_full_plus_decoy.1.bt2l" ]; then
+    if [ ! -f "${index_prefix}.1.bt2l" ]; then
         echo "Error: Bowtie2 index files were not created successfully." >&2
         exit 1
     fi
     """
+    }
 }
 
 process HOST_DECONTAMINATE {

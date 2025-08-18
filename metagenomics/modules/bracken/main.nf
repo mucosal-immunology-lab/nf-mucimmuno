@@ -67,6 +67,7 @@ process MERGE_BRACKEN_REPORTS {
         // Collect all individual Kraken2 report files
         path bracken_reports
         val sample_ids
+	    val bracken_db_ch
 
     output:
         // Emit the merged report
@@ -94,6 +95,6 @@ process MERGE_BRACKEN_REPORTS {
     python3 ${moduleDir}/filter_bracken_report.py \
         -i combined_bracken_report.tsv \
         -o filtered_combined_bracken_report.tsv \
-        --taxonomy-db ${params.taxonomy.kraken2_db}
+        --taxonomy-db ${bracken_db_ch}
     """
 }

@@ -233,6 +233,6 @@ workflow {
 
     // Merge bracken reports together
     bracken_merged_report = Channel.empty()
-    ch_bracken_merge = MERGE_BRACKEN_REPORTS(bracken_reports, bracken_sample_ids)
+    ch_bracken_merge = MERGE_BRACKEN_REPORTS(bracken_reports, bracken_sample_ids, bracken_db_ch)
     bracken_merged_report = ch_bracken_merge.combined_report
 }

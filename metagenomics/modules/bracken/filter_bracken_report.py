@@ -64,7 +64,7 @@ def main():
     args = p.parse_args()
 
     parents, ranks, names = load_taxonomy(args.taxonomy_db)
-    desired_ranks = ["genus", "family", "order", "class", "phylum", "kingdom"]
+    desired_ranks = ["genus", "family", "order", "class", "phylum", "kingdom", "domain"]
 
     # Open input and read all rows
     with open(args.input, newline="") as inf:
