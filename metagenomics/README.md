@@ -262,9 +262,7 @@ results/
     │   ├── chm13v2.0_GRCh38_full_plus_decoy.rev.1.bt2l
     │   ├── chm13v2.0_GRCh38_full_plus_decoy.rev.2.bt2l
     │   └── chm13v2.0_GRCh38_full_plus_decoy.fasta
-    ├── reports/
-    │   ├── pretrim_multiqc_report.html
-    │   └── posttrim_multiqc_report.html
-    ├── taxonomy.txt
-    └── tree.rds
+    └── reports/
+        ├── pretrim_multiqc_report.html
+        └── posttrim_multiqc_report.html
 ```
